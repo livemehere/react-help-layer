@@ -1,5 +1,7 @@
 # react-help-layer
 
+![example](https://github.com/livemehere/react-help-layer/blob/main/img/example.png?raw=true)
+
 ## function
 
 - `click` layer to next scene.
