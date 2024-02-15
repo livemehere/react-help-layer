@@ -1,5 +1,34 @@
 # react-help-layer
 
+## function
+
+- `click` layer to next scene.
+- `shift + click` to prev scene.
+- after last scene, layer disappeared.
+- if `enableKeyboardShortcut` option true, `shift + ?` start help layer at scene 1. And `ESC` run `hideHelpLayer()`
+- `showHelpLayer()` set show `true` and set step `1`.
+- `hideHelpLayer()` only set show `false`
+
+## Props
+
+```ts
+interface Props {
+    steps: {
+        selector: string;
+        scene: number;
+        label?: string;
+        gap?: number;
+        color?: string;
+        labelDir?: TDir;
+    }[];
+    currentStep: number;
+    onClick?: (e?: React.PointerEvent) => void;
+    onShiftClick?: (e?: React.PointerEvent) => void;
+    show: boolean;
+    padding?: number;
+}
+```
+
 ## example
 
 ```tsx
