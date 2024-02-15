@@ -1,9 +1,10 @@
 {
   "name": "react-help-layer",
   "private": false,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "author": "livemehere",
+  "homepage": "https://github.com/livemehere/react-help-layer/tree/master",
   "repository": "https://github.com/livemehere/react-help-layer/tree/master",
   "description": "Solution for web tutorial or help menu.",
   "license": "MIT",
