@@ -1,30 +1,67 @@
-# React + TypeScript + Vite
+# react-help-layer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## example
 
-Currently, two official plugins are available:
+```tsx
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+import { HelpLayer, useHelpLayer } from "react-help-layer";
 
-## Expanding the ESLint configuration
+// ...
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
+function App(){
+   const { showHelpLayer, currentStep, goToNextStep, goToPrevStep, show } = useHelpLayer({ enableKeyboardShortcut: true }); // Shift + "?" trigger layer
+ 
+   return (
+       <HelpLayer
+           onClick={goToNextStep}
+           onShiftClick={goToPrevStep}
+           currentStep={currentStep}
+           show={show}
+           steps={[
+               {
+                   selector: "a:nth-of-type(1)",
+                   scene: 1,
+                   label: "This is menu",
+                   gap: 14,
+                   labelDir: "bottom",
+               },
+               {
+                   selector: "#lottie",
+                   scene: 2,
+                   label: "This is lottie",
+                   gap: 14,
+                   labelDir: "right",
+               },
+               {
+                   selector: "h2",
+                   scene: 3,
+                   label: "This is title2",
+                   gap: 14,
+                   labelDir: "bottom",
+               },
+               {
+                   selector: "section button",
+                   scene: 4,
+                   label: "this is section 👉",
+                   gap: 14,
+                   labelDir: "left",
+               },
+               {
+                   selector: "[data-help='1']",
+                   scene: 5,
+                   label: "this is last one!",
+                   gap: 14,
+                   labelDir: "top",
+               },
+           ]}
+           {/* layer text style follows root element's style */}
+           style={{
+               fontSize: "20px",
+               fontWeight: "bold",
+               fontFamily: "sans-serif",
+               letterSpacing: -2,
+           }}
+       />
+   )
 }
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
